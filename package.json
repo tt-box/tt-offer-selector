@@ -1,0 +1,19 @@
+{
+  "name": "cr-product-selector",
+  "version": "1.0.0",
+  "description": "Cash register Offer Selector",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "dev": "polymer serve & npm run watch",
+    "test": "polymer test",
+    "watch": "browser-sync start --proxy localhost:8080 --startPath '/components/cr-offer-selector/demo/' --files '*.html, *.js, demo/*' "
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.16.0"
+  }
+}

@@ -1,0 +1,122 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<link rel="import" href="../iron-list/iron-list.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../paper-ripple/paper-ripple.html">
+
+<!--
+`cr-offer-selector`
+Cash Register Product Selector
+
+@demo demo/index.html 
+-->
+
+<dom-module id="cr-offer-selector">
+    <template>
+        <style>
+            :host {
+                display: block;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+            }
+
+            iron-list {
+                flex: 1 1 auto;
+            }
+
+            iron-list {
+                --iron-list-items-container: {
+                    margin: 10px;
+                };
+            }
+
+            .product {
+                width: 80px;
+                height: 80px;
+                background-color: tan;
+            }
+
+            /* Button */
+            .button {
+                display: inline-block;
+                position: relative;
+                width: 80px;
+                height: 80px;
+                line-height: 32px;
+                border-radius: 2px;
+                font-size: 0.9em;
+                background-color: #fff;
+                color: #646464;
+            }
+
+            .button > paper-ripple {
+                border-radius: 2px;
+                overflow: hidden;
+            }
+
+            .button.narrow {
+                width: 60px;
+            }
+
+            .button.grey {
+                background-color: #eee;
+            }
+
+            .button.blue {
+                background-color: #4285f4;
+                color: #fff;
+            }
+
+            .button.green {
+                background-color: #0f9d58;
+                color: #fff;
+            }
+
+            .button.raised {
+                transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+                transition-delay: 0.2s;
+                box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+            }
+
+            .button.raised:active {
+                box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+                transition-delay: 0s;
+            }
+        </style>
+
+        <iron-list grid items="[[products]]" as="product">
+            <template>
+                <div style="padding: 5px">
+                    <div class="button raised blue" tabindex$="[[tabIndex]]">
+                        <div class="center" fit>[[product.name]]</div>
+                        <paper-ripple></paper-ripple>
+
+                    </div>
+                </div>
+            </template>
+        </iron-list>
+
+    </template>
+
+    <script>
+        Polymer({
+
+            is: 'cr-offer-selector',
+
+            properties: {
+                products: {
+                    type: Array,
+                    value: function () {
+                        var arr = [];
+                        for (var pas = 1; pas < 30; pas++) {
+                            arr.push({name: "Product " + pas})
+                        }
+                        return arr;
+                    }
+                },
+            },
+
+        });
+    </script>
+</dom-module>
