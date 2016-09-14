@@ -4,6 +4,8 @@
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../paper-ripple/paper-ripple.html">
 
+<link rel="import" href="../iron-selector/iron-selector.html">
+
 <!--
 `cr-offer-selector`
 Cash Register Product Selector
@@ -85,18 +87,19 @@ Cash Register Product Selector
             }
         </style>
 
-        <iron-list grid items="[[products]]" as="product">
-            <template>
-                <div style="padding: 5px">
-                    <div class="button raised blue" tabindex$="[[tabIndex]]">
-                        <div class="center" fit>[[product.name]]</div>
-                        <paper-ripple></paper-ripple>
+        <iron-selector attr-for-selected="index" >
+            <iron-list grid items="[[products]]" as="product">
+                <template>
+                    <div style="padding: 5px">
+                        <div class="button raised blue" tabindex$="[[tabIndex]]" on-tap="_offerSelected">
+                            <div class="center" fit>[[product.name]]</div>
+                            <paper-ripple></paper-ripple>
 
+                        </div>
                     </div>
-                </div>
-            </template>
-        </iron-list>
-
+                </template>
+            </iron-list>
+        </iron-selector>
     </template>
 
     <script>
@@ -116,6 +119,9 @@ Cash Register Product Selector
                     }
                 },
             },
+            _offerSelected: function (e) {
+                console.log(e.model.index);
+            }
 
         });
     </script>
