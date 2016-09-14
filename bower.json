@@ -1,5 +1,5 @@
 {
-  "name": "cr-product-selector",
+  "name": "cr-offer-selector",
   "description": "Cash Register Product Selector",
   "main": "cr-product-selector.html",
   "dependencies": {
