@@ -1,4 +1,4 @@
-# \<cr-product-selector\>
+# \<cr-offer-selector\>
 
 Cash Register Product Selector
 
@@ -9,7 +9,7 @@ First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polyme
 ## Viewing Your Application
 
 ```
-$ polymer serve
+$ npm run dev
 ```
 
 ## Building Your Application
