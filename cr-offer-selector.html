@@ -87,11 +87,11 @@ Cash Register Product Selector
             }
         </style>
 
-        <iron-selector attr-for-selected="index" >
-            <iron-list grid items="[[products]]" as="product">
+
+            <iron-list grid id="list" items="[[products]]" as="product" on-tap="_selectOffer">
                 <template>
                     <div style="padding: 5px">
-                        <div class="button raised blue" tabindex$="[[tabIndex]]" on-tap="_offerSelected">
+                        <div class="button raised blue" tabindex$="[[tabIndex]]" on-tap="_ontapOffer">
                             <div class="center" fit>[[product.name]]</div>
                             <paper-ripple></paper-ripple>
 
@@ -99,7 +99,7 @@ Cash Register Product Selector
                     </div>
                 </template>
             </iron-list>
-        </iron-selector>
+
     </template>
 
     <script>
@@ -119,8 +119,18 @@ Cash Register Product Selector
                     }
                 },
             },
-            _offerSelected: function (e) {
-                console.log(e.model.index);
+            _ontapOffer:function (e) {
+                console.log(e);
+                console.log(e.model);
+                var offer = e.model[this.$.list.as];
+                console.log(offer);
+            },
+            _selectOffer: function (e) {
+                var model = this.$.list.modelForElement(e.target);
+                if (model) {
+                    var offer = model[this.$.list.as];
+                    console.log(offer.name);
+                }
             }
 
         });

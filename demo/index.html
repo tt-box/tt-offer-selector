@@ -12,13 +12,21 @@
     <link rel="import" href="../cr-offer-selector.html">
 
     <style is="custom-style" include="demo-pages-shared-styles">
+      demo-snippet {
+        --demo-snippet: {
+          max-width: 800px;
+          width: 800px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
     </style>
   </head>
   <body>
 
     <div class="vertical-section-container centered" >
       <h3>Basic cr-offer-selector Demo</h3>
-      <demo-snippet style="width: 800px;">
+      <demo-snippet >
         <template>
           <cr-offer-selector></cr-offer-selector>
         </template>
