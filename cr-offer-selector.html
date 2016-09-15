@@ -5,6 +5,8 @@
 <link rel="import" href="../paper-ripple/paper-ripple.html">
 
 <link rel="import" href="../iron-selector/iron-selector.html">
+<link rel="import" href="../iron-a11y-keys/iron-a11y-keys.html">
+
 
 <!--
 `cr-offer-selector`
@@ -88,17 +90,21 @@ Cash Register Product Selector
         </style>
 
 
-            <iron-list grid id="list" items="[[products]]" as="product" on-tap="_selectOffer">
-                <template>
-                    <div style="padding: 5px">
-                        <div class="button raised blue" tabindex$="[[tabIndex]]" on-tap="_ontapOffer">
-                            <div class="center" fit>[[product.name]]</div>
-                            <paper-ripple></paper-ripple>
+        <iron-list grid id="list" items="[[offers]]"
+                   as="product" on-tap="_selectOffer">
+            <template>
+                <div id="offerContainer" style="padding: 5px">
+                    <div class="button raised blue" tabindex$="[[tabIndex]]">
+                        <div class="center" fit>[[product.name]]</div>
+                        <paper-ripple></paper-ripple>
 
-                        </div>
                     </div>
-                </template>
-            </iron-list>
+                </div>
+            </template>
+        </iron-list>
+
+        <iron-a11y-keys id="a11y" target="[[listTarget]]" keys="enter"
+                        on-keys-pressed="onEnter"></iron-a11y-keys>
 
     </template>
 
@@ -108,30 +114,47 @@ Cash Register Product Selector
             is: 'cr-offer-selector',
 
             properties: {
-                products: {
+                offers: {
                     type: Array,
                     value: function () {
                         var arr = [];
                         for (var pas = 1; pas < 30; pas++) {
-                            arr.push({name: "Product " + pas})
+                            arr.push({name: 'Product ' + pas});
                         }
                         return arr;
                     }
                 },
+                listTarget: {
+                    type: Object,
+                    value: function () {
+                        return this.$.list;
+                    }
+                }
             },
-            _ontapOffer:function (e) {
-                console.log(e);
-                console.log(e.model);
-                var offer = e.model[this.$.list.as];
-                console.log(offer);
+            ready: function () {
+//                this.$.list.addOwnKeyBinding('enter:keypress','onEnter');
+            },
+            listeners: {
+                enter: 'saveSelected'
+            },
+
+            _keyselectOffer: function (e) {
+                console.log(e.target);
             },
             _selectOffer: function (e) {
                 var model = this.$.list.modelForElement(e.target);
                 if (model) {
                     var offer = model[this.$.list.as];
-                    console.log(offer.name);
+                    var copie = Object.assign({}, offer);
+                    copie = Object.freeze(copie);
+                    console.log('select offer', offer);
+                    console.log('select offer copie', copie);
                 }
-            }
+            },
+            onEnter: function (e) {
+                var model = this.$.list.modelForElement(e.target);
+                console.log('onEnter : ', e);
+            },
 
         });
     </script>
