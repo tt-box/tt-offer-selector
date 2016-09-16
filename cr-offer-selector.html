@@ -91,11 +91,13 @@ Cash Register Product Selector
 
 
         <iron-list grid id="list" items="[[offers]]"
-                   as="product" on-tap="_selectOffer">
+                   as="offer" on-tap="_selectOffer">
             <template>
                 <div id="offerContainer" style="padding: 5px">
-                    <div class="button raised blue" tabindex$="[[tabIndex]]">
-                        <div class="center" fit>[[product.name]]</div>
+                    <div class$="button raised [[offer.colorClass]]" style$="[[_computeColorStyle(offer.color)]]"
+                         tabindex$="[[tabIndex]]">
+                        <div class="center" fit>[[offer.product.name]]</div>
+                        <div class="center" fit>[[offer.price]]</div>
                         <paper-ripple></paper-ripple>
 
                     </div>
@@ -114,12 +116,45 @@ Cash Register Product Selector
             is: 'cr-offer-selector',
 
             properties: {
+                /**
+                 * List of offer like
+                 * {
+                 *                       id: 'offerId',
+                 *                       price: 24,
+                 *                       product: {
+                 *                           name: 'Name '
+                 *                       },
+                 *                       colorClass: 'grey blue green',
+                 *                       color: {
+                 *                           'background-color': '#4285f4',
+                 *                           'color': '#fff'
+                 *                       }
+                 *                   }
+                 */
                 offers: {
                     type: Array,
                     value: function () {
                         var arr = [];
+                        var colors = ['grey', 'blue', 'green'];
+                        var colorBlue = {
+                            'background-color': '#4285f4',
+                            'color': '#fff'
+                        };
                         for (var pas = 1; pas < 30; pas++) {
-                            arr.push({name: 'Product ' + pas});
+                            arr.push({
+                                        id: 'o' + pas,
+                                        price: 24,
+                                        product: {
+                                            id: 'p' + pas,
+                                            name: 'Product ' + pas
+                                        },
+                                        colorClass: colors[pas % colors.length],
+                                        color: {
+                                            'background-color': '#4285f4',
+                                            'color': '#fff'
+                                        }
+                                    }
+                            );
                         }
                         return arr;
                     }
@@ -138,6 +173,28 @@ Cash Register Product Selector
                 enter: 'saveSelected'
             },
 
+            /**
+             *
+             * @param offerStyle
+             * @returns {string}
+             * @private
+             */
+            _computeColorStyle: function (offerStyle) {
+                var styleCss = '';
+                if (this._isObject(offerStyle)) {
+                    for (var key in offerStyle) {
+                        if (offerStyle.hasOwnProperty(key)) {
+                            styleCss += key+ ': ' + offerStyle[key]+'; ';
+                        }
+                    }
+                }
+                //return 'background-color: #0f9d58; color: #4285f4';
+                return styleCss;
+            },
+            _isObject: function (item) {
+                return (typeof item === "object" && !Array.isArray(item) && item !== null);
+            },
+
             _keyselectOffer: function (e) {
                 console.log(e.target);
             },
@@ -147,8 +204,8 @@ Cash Register Product Selector
                     var offer = model[this.$.list.as];
                     var copie = Object.assign({}, offer);
                     copie = Object.freeze(copie);
-                    console.log('select offer', offer);
-                    console.log('select offer copie', copie);
+                    console.log('fire offer-select', copie);
+                    this.fire('offer-select', copie);
                 }
             },
             onEnter: function (e) {
