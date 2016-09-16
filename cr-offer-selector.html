@@ -91,7 +91,7 @@ Cash Register Product Selector
 
 
         <iron-list grid id="list" items="[[offers]]"
-                   as="offer" on-tap="_selectOffer">
+                   as="offer" on-tap="_handleOnTapOffer">
             <template>
                 <div id="offerContainer" style="padding: 5px">
                     <div class$="button raised [[offer.colorClass]]" style$="[[_computeColorStyle(offer.color)]]"
@@ -198,14 +198,25 @@ Cash Register Product Selector
             _keyselectOffer: function (e) {
                 console.log(e.target);
             },
-            _selectOffer: function (e) {
+            _handleOnTapOffer: function (e) {
                 var model = this.$.list.modelForElement(e.target);
                 if (model) {
                     var offer = model[this.$.list.as];
-                    var copie = Object.assign({}, offer);
-                    copie = Object.freeze(copie);
-                    console.log('fire offer-select', copie);
-                    this.fire('offer-select', copie);
+                    this._selectOffer(offer);
+                }
+            },
+            _selectOffer: function (offerSelect) {
+                if (offerSelect) {
+                    var offer = Object.assign({}, offerSelect);
+                    // Clean
+                    delete offer.color;
+                    delete offer.colorStyle;
+                    delete offer.colorClass;
+                    // unmutable
+                    offer = Object.freeze(offer);
+                    // Fire Event Select
+                    console.log('fire offer-select', offer);
+                    this.fire('offer-select', offer);
                 }
             },
             onEnter: function (e) {
