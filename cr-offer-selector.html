@@ -2,11 +2,11 @@
 
 <link rel="import" href="../iron-list/iron-list.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
-<link rel="import" href="../paper-ripple/paper-ripple.html">
 
 <link rel="import" href="../iron-selector/iron-selector.html">
 <link rel="import" href="../iron-a11y-keys/iron-a11y-keys.html">
 
+<link rel="import" href="tt-offer-item.html">
 
 <!--
 `cr-offer-selector`
@@ -35,73 +35,15 @@ Cash Register Product Selector
                 };
             }
 
-            .product {
-                width: 80px;
-                height: 80px;
-                background-color: tan;
-            }
 
-            /* Button */
-            .button {
-                display: inline-block;
-                position: relative;
-                width: 80px;
-                height: 80px;
-                line-height: 32px;
-                border-radius: 2px;
-                font-size: 0.9em;
-                background-color: #fff;
-                color: #646464;
-            }
-
-            .button > paper-ripple {
-                border-radius: 2px;
-                overflow: hidden;
-            }
-
-            .button.narrow {
-                width: 60px;
-            }
-
-            .button.grey {
-                background-color: #eee;
-            }
-
-            .button.blue {
-                background-color: #4285f4;
-                color: #fff;
-            }
-
-            .button.green {
-                background-color: #0f9d58;
-                color: #fff;
-            }
-
-            .button.raised {
-                transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-                transition-delay: 0.2s;
-                box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-            }
-
-            .button.raised:active {
-                box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
-                transition-delay: 0s;
-            }
         </style>
 
 
-        <iron-list grid id="list" items="[[offers]]"
-                   as="offer" on-tap="_handleOnTapOffer">
+        <iron-list grid id="list" items="[[offers]]" as="offer" on-tap="_handleOnTapOffer">
             <template>
                 <div id="offerContainer" style="padding: 5px">
-                    <div class$="button raised [[offer.colorClass]]" style$="[[_computeColorStyle(offer.color)]]"
-                         tabindex$="[[tabIndex]]">
-                        <div class="center" fit>[[offer.product.name]]</div>
-                        <div class="center" fit>[[offer.price]]</div>
-                        <paper-ripple></paper-ripple>
-
-                    </div>
-                </div>
+                    <tt-offer-item offer="[[offer]]"></tt-offer-item>
+                 </div>
             </template>
         </iron-list>
 
@@ -173,27 +115,6 @@ Cash Register Product Selector
                 enter: 'saveSelected'
             },
 
-            /**
-             *
-             * @param offerStyle
-             * @returns {string}
-             * @private
-             */
-            _computeColorStyle: function (offerStyle) {
-                var styleCss = '';
-                if (this._isObject(offerStyle)) {
-                    for (var key in offerStyle) {
-                        if (offerStyle.hasOwnProperty(key)) {
-                            styleCss += key+ ': ' + offerStyle[key]+'; ';
-                        }
-                    }
-                }
-                //return 'background-color: #0f9d58; color: #4285f4';
-                return styleCss;
-            },
-            _isObject: function (item) {
-                return (typeof item === "object" && !Array.isArray(item) && item !== null);
-            },
 
             _keyselectOffer: function (e) {
                 console.log(e.target);
