@@ -19,14 +19,26 @@
 
     <div class="vertical-section-container centered">
       <h3>Basic tt-offer-item Demo</h3>
-      <demo-snippet  >
-        <template is="dom-bind">
-          <tt-offer-input offer="{{offer}}"></tt-offer-input>
-          <tt-offer-item offer="{{offer}}"></tt-offer-item>
+      <demo-snippet>
+        <template is="dom-bind" id="demo">
+          <tt-offer-item  offer="{{offer}}"></tt-offer-item>
         </template>
         <script>
           var demo = document.querySelector('#demo');
-          demo.dateValue = '2015-17-08';
+          demo.offer = {
+            id: 'offerId',
+            price: 24,
+            currency: '€',
+            product: {
+              id: 'productId',
+              name: 'Product Name'
+            },
+            colorClass:  'grey blue green',
+            color: {
+              'background-color': '#4285f4',
+              'color': '#fff'
+            }
+          };
         </script>
       </demo-snippet>
     </div>

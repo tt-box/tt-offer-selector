@@ -40,7 +40,8 @@ The model pattern is
                 position: relative;
                 width: 80px;
                 height: 80px;
-                line-height: 32px;
+                line-height: 16px;
+                padding: 4px;
                 border-radius: 2px;
                 font-size: 0.9em;
                 background-color: #fff;
@@ -85,7 +86,7 @@ The model pattern is
         <div class$="button raised [[offer.colorClass]]" style$="[[_computeColorStyle(offer.color)]]"
              tabindex$="[[tabIndex]]">
             <div class="center" fit>[[offer.product.name]]</div>
-            <div class="center" fit>[[offer.price]]</div>
+            <div class="center" fit>[[offer.price]] [[offer.currency]]</div>
             <paper-ripple></paper-ripple>
 
         </div>
