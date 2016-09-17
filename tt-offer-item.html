@@ -2,6 +2,29 @@
 <link rel="import" href="../paper-ripple/paper-ripple.html">
 
 
+<!--
+`tt-offer-item`
+Offer Item for list
+
+The model pattern is
+```
+{
+  id: 'offerId',
+  price: 24,
+  product: {
+    id: 'productId',
+    name: 'Product Name'
+  },
+  colorClass: colorClass: 'grey blue green',
+  color: {
+    'background-color': '#4285f4',
+    'color': '#fff'
+  }
+}
+```
+
+@demo demo/offer-item.html
+-->
 <dom-module id="tt-offer-item">
 
     <!-- Defines the element's style and local DOM -->

@@ -8,7 +8,7 @@
   },
   "scripts": {
     "lint": "polymer lint --input tt-offer-selector.html",
-    "dev": "polymer serve & npm run watch",
+    "dev": "polymer serve -p 8080 & npm run watch",
     "test": "polymer test",
     "watch": "browser-sync start --proxy localhost:8080 --startPath '/components/tt-offer-selector/demo/' --files '*.html, *.js, demo/*' "
   },
