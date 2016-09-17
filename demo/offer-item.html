@@ -17,14 +17,17 @@
   </head>
   <body>
 
-    <div class="vertical-section-container centered" >
+    <div class="vertical-section-container centered">
       <h3>Basic tt-offer-item Demo</h3>
-      <demo-snippet>
-        <template>
+      <demo-snippet  >
+        <template is="dom-bind">
           <tt-offer-input offer="{{offer}}"></tt-offer-input>
-          <tt-offer-item offer="[[offer]]"></tt-offer-item>
+          <tt-offer-item offer="{{offer}}"></tt-offer-item>
         </template>
-
+        <script>
+          var demo = document.querySelector('#demo');
+          demo.dateValue = '2015-17-08';
+        </script>
       </demo-snippet>
     </div>
 
