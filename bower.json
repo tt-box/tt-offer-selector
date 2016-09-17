@@ -1,7 +1,7 @@
 {
-  "name": "cr-offer-selector",
-  "description": "Cash Register Product Selector",
-  "main": "cr-offer-selector.html",
+  "name": "tt-offer-selector",
+  "description": "Cash Register Offer Selector",
+  "main": "tt-offer-selector.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
     "iron-list": "PolymerElements/iron-list#^1.3.9",

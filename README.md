@@ -1,6 +1,6 @@
-# \<cr-offer-selector\>
+# \<tt-offer-selector\>
 
-Cash Register Product Selector
+Cash Register Offer Selector
 
 ## Install the Polymer-CLI
 
