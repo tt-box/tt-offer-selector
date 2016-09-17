@@ -1,5 +1,5 @@
 {
-  "name": "cr-offer-selector",
+  "name": "tt-offer-selector",
   "version": "1.0.0",
   "description": "Cash register Offer Selector",
   "main": "index.js",
@@ -7,10 +7,10 @@
     "test": "test"
   },
   "scripts": {
-    "lint": "polymer lint --input cr-offer-selector.html",
+    "lint": "polymer lint --input tt-offer-selector.html",
     "dev": "polymer serve & npm run watch",
     "test": "polymer test",
-    "watch": "browser-sync start --proxy localhost:8080 --startPath '/components/cr-offer-selector/demo/' --files '*.html, *.js, demo/*' "
+    "watch": "browser-sync start --proxy localhost:8080 --startPath '/components/tt-offer-selector/demo/' --files '*.html, *.js, demo/*' "
   },
   "author": "",
   "license": "ISC",

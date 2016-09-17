@@ -8,22 +8,22 @@
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../../web-component-tester/browser.js"></script>
 
-    <link rel="import" href="../cr-offer-selector.html">
+    <link rel="import" href="../tt-offer-selector.html">
   </head>
   <body>
 
     <test-fixture id="basic">
       <template>
-        <cr-product-selector></cr-product-selector>
+        <tt-offer-selector></tt-offer-selector>
       </template>
     </test-fixture>
 
     <script>
-      suite('cr-product-selector', function() {
+      suite('tt-offer-selector', function() {
 
         test('instantiating the element works', function() {
           var element = fixture('basic');
-          assert.equal(element.is, 'cr-product-selector');
+          assert.equal(element.is, 'tt-offer-selector');
         });
 
       });
