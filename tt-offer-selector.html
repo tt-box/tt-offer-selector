@@ -35,13 +35,16 @@ Cash Register Product Selector
                 };
             }
 
+            .offerContainer {
+                padding: 5px;
+            }
 
         </style>
 
 
         <iron-list grid id="list" items="[[offers]]" as="offer" on-tap="_handleOnTapOffer">
             <template>
-                <div id="offerContainer" style="padding: 5px">
+                <div class="offerContainer"  tabindex$="[[tabIndex]]">
                     <tt-offer-item offer="[[offer]]"></tt-offer-item>
                  </div>
             </template>
