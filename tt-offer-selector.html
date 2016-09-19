@@ -76,29 +76,7 @@ Cash Register Product Selector
                 offers: {
                     type: Array,
                     value: function () {
-                        var arr = [];
-                        var colors = ['grey', 'blue', 'green'];
-                        var colorBlue = {
-                            'background-color': '#4285f4',
-                            'color': '#fff'
-                        };
-                        for (var pas = 1; pas < 30; pas++) {
-                            arr.push({
-                                        id: 'o' + pas,
-                                        price: 24,
-                                        product: {
-                                            id: 'p' + pas,
-                                            name: 'Product ' + pas
-                                        },
-                                        colorClass: colors[pas % colors.length],
-                                        color: {
-                                            'background-color': '#4285f4',
-                                            'color': '#fff'
-                                        }
-                                    }
-                            );
-                        }
-                        return arr;
+                        return this.demoGenerator(30);
                     },
                     notify: true
                 },
@@ -108,6 +86,31 @@ Cash Register Product Selector
                         return this.$.list;
                     }
                 }
+            },
+            demoGenerator: function(count) {
+                var arr = [];
+                var colors = ['grey', 'blue', 'green'];
+                var colorBlue = {
+                    'background-color': '#4285f4',
+                    'color': '#fff'
+                };
+                for (var pas = 1; pas <= count; pas++) {
+                    arr.push({
+                                id: 'o' + pas,
+                                price: 24,
+                                product: {
+                                    id: 'p' + pas,
+                                    name: 'Product ' + pas
+                                },
+                                colorClass: colors[pas % colors.length],
+                                color: {
+                                    'background-color': '#4285f4',
+                                    'color': '#fff'
+                                }
+                            }
+                    );
+                }
+                return arr;
             },
             ready: function () {
 //                this.$.list.addOwnKeyBinding('enter:keypress','onEnter');
