@@ -26,10 +26,41 @@
 
     <div class="vertical-section-container centered" >
       <h3>Basic tt-offer-selector Demo</h3>
-      <demo-snippet >
-        <template>
+      <demo-snippet>
+        <template is="dom-bind" id="demo">
           <tt-offer-selector></tt-offer-selector>
         </template>
+        <script>
+          var demo = document.querySelector('#demo');
+          var generator = function (size) {
+
+            var arr = [];
+            var colors = ['grey', 'blue', 'green'];
+            var colorBlue = {
+              'background-color': '#4285f4',
+              'color': '#fff'
+            };
+            for (var pas = 1; pas < size; pas++) {
+              arr.push({
+                        id: 'o' + pas,
+                        price: 24,
+                        product: {
+                          id: 'p' + pas,
+                          name: 'Product ' + pas
+                        },
+                        colorClass: colors[pas % colors.length],
+                        color: {
+                          'background-color': '#4285f4',
+                          'color': '#fff'
+                        }
+                      }
+              );
+            }
+            return arr;
+          };
+          demo.offers = generator(5);
+        </script>
+
       </demo-snippet>
     </div>
 
