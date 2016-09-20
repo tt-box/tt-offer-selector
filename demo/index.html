@@ -28,7 +28,7 @@
       <h3>Basic tt-offer-selector Demo</h3>
       <demo-snippet>
         <template is="dom-bind" id="demo">
-          <tt-offer-selector></tt-offer-selector>
+          <tt-offer-selector offers="[[offers]]"></tt-offer-selector>
         </template>
         <script>
           var demo = document.querySelector('#demo');
@@ -43,7 +43,7 @@
             for (var pas = 1; pas < size; pas++) {
               arr.push({
                         id: 'o' + pas,
-                        price: 24,
+                        price: {amount: 24, currency: 'EUR'},
                         product: {
                           id: 'p' + pas,
                           name: 'Product ' + pas
@@ -58,7 +58,7 @@
             }
             return arr;
           };
-          demo.offers = generator(5);
+          demo.offers = generator(50);
         </script>
 
       </demo-snippet>

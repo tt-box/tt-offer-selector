@@ -1,6 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-ripple/paper-ripple.html">
 
+<link rel="import" href="../tt-price/tt-price.html">
 
 <!--
 `tt-offer-item`
@@ -10,7 +11,7 @@ The model pattern is
 ```
 {
   id: 'offerId',
-  price: 24,
+  price: {amount: 24, currency: 'EUR'},
   product: {
     id: 'productId',
     name: 'Product Name'
@@ -86,7 +87,7 @@ The model pattern is
         <div class$="button raised [[offer.colorClass]]" style$="[[_computeColorStyle(offer.color)]]"
              tabindex$="[[tabIndex]]">
             <div class="center" fit>[[offer.product.name]]</div>
-            <div class="center" fit>[[offer.price]] [[offer.currency]]</div>
+            <tt-price offer="[[offer.price]]" class="center" fit></tt-price>
             <paper-ripple></paper-ripple>
 
         </div>
