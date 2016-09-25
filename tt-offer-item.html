@@ -35,6 +35,8 @@ The model pattern is
                 display: block;
             }
 
+
+
             /* Button */
             .button {
                 display: inline-block;
@@ -84,13 +86,14 @@ The model pattern is
             }
         </style>
 
-        <div class$="button raised [[offer.colorClass]]" style$="[[_computeColorStyle(offer.color)]]"
+        <div class$="button raised [[offer.colorClass]]"
+             style$="[[_computeColorStyle(offer.color)]]"
              tabindex$="[[tabIndex]]">
-            <div class="center" fit>[[offer.product.name]]</div>
-            <tt-price offer="[[offer.price]]" class="center" fit></tt-price>
+            <div class="center">[[offer.product.name]]</div>
+            <tt-price price="[[offer.price]]" class="center" ></tt-price>
             <paper-ripple></paper-ripple>
-
         </div>
+
     </template>
 
     <!-- Creates the element's prototype and registers it -->
