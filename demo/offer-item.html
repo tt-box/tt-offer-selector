@@ -12,6 +12,9 @@
     <link rel="import" href="../tt-offer-item.html">
 
     <style is="custom-style" include="demo-pages-shared-styles">
+      .offerContainer {
+        height: 50vh;
+      }
     </style>
   </head>
   <body>
@@ -20,7 +23,7 @@
       <h3>Basic tt-offer-item Demo</h3>
       <demo-snippet>
         <template is="dom-bind" id="demo">
-          <tt-offer-item  offer="{{offer}}"></tt-offer-item>
+          <tt-offer-item class="offerContainer" offer="{{offer}}"></tt-offer-item>
         </template>
         <script>
           var demo = document.querySelector('#demo');
