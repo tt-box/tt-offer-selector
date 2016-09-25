@@ -1,6 +1,7 @@
 <link rel="import" href="../polymer/polymer.html">
 
 <link rel="import" href="../iron-list/iron-list.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 
 <link rel="import" href="../iron-selector/iron-selector.html">
@@ -19,13 +20,11 @@ Cash Register Product Selector
     <template>
         <style>
             :host {
-                display: flex;
-                flex-direction: column;
+                @apply(--layout-vertical);
             }
 
             iron-list {
-                flex: 1 1 auto;
-                width: 30px;
+                @apply(--layout-flex);
             }
 
             iron-list {
