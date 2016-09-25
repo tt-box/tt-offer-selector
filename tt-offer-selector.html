@@ -79,7 +79,7 @@ Cash Register Product Selector
                 offers: {
                     type: Array,
                     value: function () {
-                        return {};
+                        return [];
                     },
                     notify: true
                 },
@@ -89,9 +89,6 @@ Cash Register Product Selector
                         return this.$.list;
                     }
                 }
-            },
-            ready: function () {
-//                this.$.list.addOwnKeyBinding('enter:keypress','onEnter');
             },
             listeners: {
                 enter: 'saveSelected'
